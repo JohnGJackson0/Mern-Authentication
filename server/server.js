@@ -13,4 +13,9 @@ app.listen(port, () => {
   console.log(`API is running on port ${port}`);
 });
 
-//run with node server.js
+/*
+Note MVC:  
+ React -> View 
+ Model -> UserModel (soon)
+ Controller -> controllers/Auth.js
+*/
