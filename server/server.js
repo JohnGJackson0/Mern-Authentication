@@ -3,15 +3,10 @@ const express = require("express");
 const app = express();
 
 // app is what we use to get routing middleware ect. all related to express
+const authRoutes = require("./routes/auth.js");
 
-//get => with this url, do callback function
-//req => the request data from this url
-//res => send back to client
-app.get("/api/signup", (req, res) => {
-  res.json({
-    data: "You hit signup endpoint",
-  });
-});
+//use use whenever applying middleware
+app.use("/api", authRoutes);
 
 const port = process.env.port || 8000;
 app.listen(port, () => {
