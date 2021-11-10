@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -11,6 +12,15 @@ const authRoutes = require("./routes/auth.js");
 
 //use use whenever applying middleware
 app.use("/api", authRoutes);
+
+//this code replaces depreciated BodyParser
+//intercepts the json response and turns it into js object
+//so that we don't have to do it on our front end.
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
+
 //this is a console.log() er and it logs relevant req/res info
 app.use(morgan("dev"));
 
